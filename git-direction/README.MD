@@ -1,44 +1,23 @@
-git常用命令
+关于git版本控制协议一些粗浅的理解
 ---
->主要介绍常用的一些git命令
 
-**基础命令**
+>引用（即指针）对于理解git非常重要，git的分支、tag只是指向了不同commit的指针，不是实际文件.
 
-```
-git add 命令（多功能命令，根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等）  
-git status 命令，用来查看发生变动的文件。
-```
-
-**分支管理**
-```
-git branch --track experimental origin/experimental 拉取并追踪分支  
-git branch -d <branch_name>  删除本地分支  
-git push origin --delete branch_3.0_liaoheng  删除远程分支
-git branch -vv 查看本地分支和远程分支的跟踪关联关系 
-git checkout -b myfeature 以当前分支为基础创建新分支
-git branch --set-upstream-to=origin/branch_3.0_liaoheng branch_3.0_liaoheng  将本地分支与远程分支关联
-```
-
-**切换git源：**
-```
-git remote remove origin
-git remote add origin  https://xxxx.git  将本地库添加到远程
-git push -u origin --all # pushes up the repo and its refs for the first time  上传所有文件
-git push -u origin --tags # pushes up any tags
-```
-
-**标签管理**
-```
-git tag -a v1.1.4 -m "tagging version 1.1.4" #打标签
-git tag #列出标签
-git push --tags  推送所有本地标签到远程仓库
-git push 仓库名 标签名  eg. git push origin v1.0       推送本地标签到远程仓库
-git push origin --delete tag <tagname> 删除远程tag
-git tag -d v1.1.4  删除本地仓库标签
-```
-
-**恢复commit**
-http://zhyq0826.iteye.com/blog/1671638
+###git版本控制协议结构图
 
 
-git ls-files --stage 显示index文件（.git目录下） 内容，即暂存区信息
+![](./pic1.jpg)
+![](./pic2.png)
+
+
+###关于暂存区的理解
+
+>1.图中index就是stage状态(暂存区)，index保存的是当前所有文件最新的git对象对应的hash值，使用commit命令后会将这些最新的状态提交到head中，head保存的就是该分支所有文件最新的状态，属于git仓库信息
+
+>2.Git index 可以看作是工作目录和Git库目录之间的暂存区，commit已经是把修改作用于仓库了，只不过没有push到远程仓库
+暂存区（stage或者叫index） 存储的是整个文件，如果文件修改add到暂存区，那么就会覆盖文件的上个版本，所以一定不会发生冲突
+
+>3.切换分支前要把修改的未提交的内容提交，不然切换分之后修改内容在另一个分支上任然可见，这样提交的时候就会有不需要的内容被提交（stash可以解决这个问题）
+	
+
+
