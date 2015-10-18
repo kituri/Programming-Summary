@@ -7,3 +7,4 @@ Android-Summary
 3. [工具](./工具/README.MD)
 4. [内存优化](./优化/内存优化/README.MD)
 5. [其他优化](./优化/其他优化/README.MD)
+6. [git-direction](./git-direction/README.MD)
