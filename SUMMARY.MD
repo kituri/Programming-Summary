@@ -10,3 +10,5 @@ Android-Summary
 6. [git-direction](./git-direction/README.MD)
 7. [构建工具](./构建工具/README.MD)
 8. [批量打包](./批量打包/README.MD)
+9. [quick response code](./Quick-Response-Code/README.MD)
+	
