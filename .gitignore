@@ -5,4 +5,7 @@
 .DS_Store
 /build
 /captures
+
+#忽略任意(含子目录) .idea 目录下的所有文件
 .idea/
+*.class
