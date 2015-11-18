@@ -9,6 +9,14 @@ git add 命令（多功能命令，根据目标文件的状态不同，此命令
 git status 命令，用来查看发生变动的文件。
 ```
 
+**查看提交**
+```
+git log 					查看commit的历史
+git show <commit-hash-id>	查看某次commit的修改内容
+git log -p <filename>		查看某个文件的修改历史
+git log -p -2				查看最近2次的更新内容
+```
+
 **分支管理**
 ```
 git branch --track experimental origin/experimental 拉取并追踪分支  
@@ -37,12 +45,32 @@ git push origin --delete tag <tagname> 删除远程tag
 git tag -d v1.1.4  删除本地仓库标签
 ```
 
-**恢复commit**
+**回滚（reset && revert）**
 
-http://zhyq0826.iteye.com/blog/1671638
+	git reset 是把HEAD向后移动了一下，而git revert是HEAD继续前进，只是新的commit的内容和要revert的内容正好相反，能够抵消要被revert的内容。
 
-reset: 直接回退，将repository的版本进行回退，工作区的状态会根据参数不同有不同的结果
+参考：http://samael65535.github.io/git/2013/01/18/git/
+     http://yijiebuyi.com/blog/8f985d539566d0bf3b804df6be4e0c90.html
 
-revert：以新提交覆盖旧的提交达到回退的目的，如果修改已经不是最新的commit，则只能使用git revert。
+```
+HEAD 	最近一个提交
+HEAD^ = HEAD^1  	上一次
 
+```
+
+**reset**: 直接回退，将repository的版本进行回退，工作区的状态会根据参数不同有不同的结果
+
+```
+git reset HEAD^1 将分支的HEAD指针指向倒数第二个提交（默认mixed策略，即保留工作区代码，不保留仓库和暂存区内容，如果要重新提交，需要执行git add .）
+```
+
+**revert**：以新提交覆盖旧的提交达到回退的目的，如果修改已经不是最新的commit，则只能使用git revert。
+
+```
+git revert HEAD 撤销最近的一次提交
+git revert HEAD^1 撤销倒数第二条提交（倒数第一条不撤销），通过产生一个commit覆盖倒数第二条commit，但是不会覆盖最新的一条（倒数第一条）
+```
+
+
+**其他**
 git ls-files --stage 显示index文件（.git目录下） 内容，即暂存区信息
