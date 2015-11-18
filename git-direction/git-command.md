@@ -38,8 +38,11 @@ git tag -d v1.1.4  删除本地仓库标签
 ```
 
 **恢复commit**
+
 http://zhyq0826.iteye.com/blog/1671638
-reset: 直接回退，将repository的版本进行回退，工作区的状态会根同的结据参数不同有不果
+
+reset: 直接回退，将repository的版本进行回退，工作区的状态会根据参数不同有不同的结果
+
 revert：以新提交覆盖旧的提交达到回退的目的，如果修改已经不是最新的commit，则只能使用git revert。
 
 git ls-files --stage 显示index文件（.git目录下） 内容，即暂存区信息

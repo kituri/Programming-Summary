@@ -11,4 +11,5 @@ Android-Summary
 7. [构建工具](./构建工具/README.MD)
 8. [批量打包](./批量打包/README.MD)
 9. [quick response code](./Quick-Response-Code/README.MD)
+10. [lambda](./lambda/README.MD)
 	
