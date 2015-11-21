@@ -27,11 +27,11 @@ Linux终端命令
 
 `rename baidu.html index.html * ` 将baidu.html 重命名为index.html
 
-[查找相关命令](http://www.ruanyifeng.com/blog/2009/10/5_ways_to_search_for_files_using_the_terminal.html)
-1. find  
-2. locate  
-3. whereis  
-4. which  
-5. type  
+[查找相关命令](http://www.ruanyifeng.com/blog/2009/10/5_ways_to_search_for_files_using_the_terminal.html)  
+1. find
+2. locate
+3. whereis
+4. which
+5. type
 
 
