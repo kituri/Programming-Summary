@@ -12,5 +12,5 @@ Android-Summary
 8. [批量打包](./批量打包/README.MD)
 9. [quick response code](./Quick-Response-Code/README.MD)
 10. [lambda](./lambda/README.MD)
-11. [jenkins-config](./jenkins-config/jenkins-config.md)
+11. [jenkins-config](./jenkins-config/jenkins-config-ant.md)
 	
