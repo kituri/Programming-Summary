@@ -106,5 +106,10 @@ import sys
 file_path_old = './cmbShellProject/build/outputs/apk/cmbShellProject-debug.apk'
 file_path_new = './cmbShellProject/build/outputs/apk/Movies-'+sys.argv[1]+'.apk'
 
+if os.path.isfile(file_path_new):
+	os.remove(file_path_new)
+	print('成功移除文件 '+ file_path_new)
+else:
+	print(file_path_new+'不存在，不需移除文')
 os.rename(file_path_old , file_path_new)
 ```
