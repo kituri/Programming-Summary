@@ -4,6 +4,7 @@ Android自动构建
 	主机：jenkins服务器
 	节点机：windows 7 64bit
 	构建工具：gradle	
+	脚本：python 3.5
 
 ###一、搭建jenkins
 
@@ -27,7 +28,7 @@ jenkins本身是一个java服务端程序，可以直接在tomcat等服务器上
 `java -jar slave.jar -jnlpUrl http://192.168.20.168:8080/jenkins/computer/Android-Movie-UAT-Node/slave-agent.jnlp -secret ef17b121a06d6
 c5f42cfd9e12b4c98b569d165e08f3d492381b90a0b2530f025`
 	
-	说明：密钥在通讯时验证，不同节点不同。
+	说明：密钥在通讯时验证，不同节点不同时间会不同，在节点机离线时进入节点详情可以看到这段代码。
 
 ###四、配置节点机器的构建环境
 	
@@ -38,12 +39,13 @@ c5f42cfd9e12b4c98b569d165e08f3d492381b90a0b2530f025`
 
 ###五、创建构建任务
 
-配置的android-gradle-movies-uat如图
+配置的android-gradle-movies如图
 
+![](gradle-job-0.png);
 ![](gradle-job-1.png);
 ![](gradle-job-2.png);
 
-	说明
+	关于任务配置的说明
 	1. Label指定运行的节点机器。
 	2. 构建 栏目使用的是windows shell命令行，因为在安装gradle插件的时候安装失败，所以直接调用节点机器的命令行执行构建指令
 	3. Archive the artifacts将生成的构建文件保存到主机服务器，从而在构建成功后可以在jenkins服务器下载。
@@ -55,4 +57,54 @@ c5f42cfd9e12b4c98b569d165e08f3d492381b90a0b2530f025`
 构建成功后可以在**状态**栏看到：
 ![](gradle-job-result.png)
 
- 
+
+
+其他
+---
+在构建中有两步，因为对用windows cmd命令操作文件不熟悉，所以引入了python脚本,同时也方便以后切换到线上Linux环境复用脚本。
+使用sublime+jedi插件作为python工具还是很赞的
+
+涉及的python文件如：
+
+1. switch_env.py
+
+
+```python
+import sys
+import re
+import codecs
+
+env = sys.argv[1]
+print('环境变量'+env)
+
+env_file_path = './projectFoundation/src/main/java/com/project/foundation/BaseBuildConfig.java'
+env_file_r = open(env_file_path,'r',encoding='utf8')
+lines = env_file_r.readlines();
+env_file_r.close
+print('行数'+str(len(lines)))
+
+env_file_w = open(env_file_path,'w',encoding='utf8')
+
+for line in lines:
+	if 'private final static int CURRENT_ENVIRONMENT' in line:
+		print("修改环境前："+line)
+		newline = "private final static int CURRENT_ENVIRONMENT = "+env+" ;"
+		env_file_w.writelines(newline)	
+		print("修改环境后："+newline)
+		continue
+	env_file_w.writelines(line)
+
+env_file_w.close()
+```
+
+2. rename_apk.py
+
+```python
+import os
+import os.path
+import sys
+file_path_old = './cmbShellProject/build/outputs/apk/cmbShellProject-debug.apk'
+file_path_new = './cmbShellProject/build/outputs/apk/Movies-'+sys.argv[1]+'.apk'
+
+os.rename(file_path_old , file_path_new)
+```
