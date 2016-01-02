@@ -41,7 +41,10 @@ Linux终端命令
 
 find查找的文件的属性，grep查找的是文件的内容
 
-ps -ef | grep nginx 查找和nginx有关系的进程列表
+`find . -name "*Dao*" -exec rm -rf {} \; 查找当前目录所有文件名包含Dao的文件并将他们删除`
+`ps -ef | grep nginx 查找和nginx有关系的进程列表`
+
+`|` :管道命令，将上个命令的输出作为下个命令的输入
  
 1. find
 2. locate
