@@ -1,7 +1,11 @@
 my-works
 ---
-	对在前公司工作产生的代码不会开源，有任何问题可以交流。
+	something have been done.
 	
-UI&动画
+Animation
 --
-1. [2345阅读王-书架效果](./1-shelf/shelf.md)
+1. [书架效果](./Animation-BookShelf/shelf.md)
+
+TouchEvent
+--
+1. [影院选座](./TouchEvent-SelectSeatView/SelectSeatView.md)
