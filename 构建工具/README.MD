@@ -7,6 +7,7 @@
 >一般c/c++ 项目用make,或者 premake. 而java 一般是ant,ivy,gradle,maven,还有直接的shell
 
 ###常用构建工具
-1. Ant
+1. Make
+2. Ant
 2. Maven
 3. Gradle

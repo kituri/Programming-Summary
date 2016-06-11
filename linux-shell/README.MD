@@ -1,5 +1,32 @@
-Linux终端命令
+Linux基础与终端命令
 ---
+关于Linux常用目录：
+
+1. http://www.ruanyifeng.com/blog/2012/02/a_history_of_unix_directory_structure.html
+2. https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard
+3. http://cnbin.github.io/blog/2015/06/05/mac-os-x-de-xi-tong-mu-lu-jie-gou/
+
+关于 - & -- 的区别
+
+http://serverfault.com/questions/387935/whats-the-difference-betwen-the-single-dash-and-double-dash-flags-on-shell-comm
+
+###查看进程占用端口的方式
+1. lsof(list open files)	
+2. ps
+
+
+以查看1099端口为例：
+
+```
+lsof -i :1099
+ps -ef | grep 1099
+```
+终止相关进程
+
+```
+sudo kill -9 PID
+```
+
 
 ####包管理工具
 
@@ -27,6 +54,8 @@ Linux终端命令
 
 
 ####常用命令
+
+`ipconfig getifaddr en0`  获取WIFI局域网IP地址 
 
 `wget&&curl 下载`
 
@@ -66,6 +95,9 @@ find查找的文件的属性，grep查找的是文件的内容
 
 		chown更改文档的属主，指定 有且只有一个用户。
 		chomod更改文件的权限，包括user（属主），group（与属主同一个用户组），		everyone（其他用户）对文件的rwx权限，7表示全部权限开通
+		
+####后台运行程序
+```nohup 'command line' &```
 
 
 
