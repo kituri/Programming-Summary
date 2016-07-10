@@ -7,6 +7,8 @@ Programming-Summary
 ###1. Common
 
 * [QRcode相关（二维码）](./Common/Quick-Response-Code/README.MD)
+* [GIT的理解](./Common/git-direction/README.MD)
+* [密码学简介](./Common/Cryptography/README.MD)
 
 
 ###2. Android & Java
@@ -21,7 +23,7 @@ Programming-Summary
 
 ###3. Platforms & Tools
 
-* [GIT的理解](./Common/git-direction/README.MD)
+
 * [常见构建工具简介（《jenkins简介》也有相关介绍）](./Platforms&Tools/构建工具/README.MD)
 * [jenkins搭建](./Platforms&Tools/jenkins-config/jenkins-config-gradle.md)
 * [提升效率的工具](./Platforms&Tools/提升效率的工具/README.MD)
